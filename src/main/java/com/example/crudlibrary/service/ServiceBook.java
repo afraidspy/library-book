@@ -17,7 +17,7 @@ public class ServiceBook implements  InterfaceServiceBook{
 
     @Override
     public List<Book> finAllBooks() {
-        return null;
+        return bookRepository.findAll();
     }
 
     @Override
@@ -27,6 +27,7 @@ public class ServiceBook implements  InterfaceServiceBook{
 
     @Override
     public void updateBoook(Book book) {
+        bookRepository.save(book);
 
     }
 
