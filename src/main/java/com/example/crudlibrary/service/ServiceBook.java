@@ -27,12 +27,19 @@ public class ServiceBook implements  InterfaceServiceBook{
 
     @Override
     public void updateBoook(Book book) {
-        bookRepository.save(book);
+        Optional<Book> bookOptional = bookRepository.findById(book.getId());
+        Book bookUpdated = bookOptional.get();
+        bookUpdated.setName(book.getName());
+        bookUpdated.setDescription(book.getDescription());
+        bookUpdated.setPrice(book.getPrice());
+        bookRepository.save(bookUpdated);
+
 
     }
 
     @Override
     public void deleteBook(Long id) {
+        bookRepository.deleteById(id);
 
     }
 
